@@ -1,2 +1,2 @@
 # vmsys-api
-Vending Machine API
+Vending Machine System API
