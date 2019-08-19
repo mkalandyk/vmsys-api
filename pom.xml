@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>8</java.version>
         <org.springframework.version>5.1.2.RELEASE</org.springframework.version>
         <org.springframework.batch>4.0.0.RELEASE</org.springframework.batch>
     </properties>
