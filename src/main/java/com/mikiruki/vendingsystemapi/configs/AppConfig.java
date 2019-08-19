@@ -36,11 +36,13 @@ public class AppConfig {
 
         BasicDataSource dataSource = new BasicDataSource();
         URI dbUri = new URI(System.getenv("DATABASE_URL"));
+        String username = dbUri.getUserInfo().split(":")[0];
+        String password = dbUri.getUserInfo().split(":")[1];
 
         dataSource.setDriverClassName("org.postgresql.Driver");
         dataSource.setUrl("jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + "/vms");
-        dataSource.setUsername("vms-admin");
-        dataSource.setPassword("a ");
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
 
         return dataSource;
     }
