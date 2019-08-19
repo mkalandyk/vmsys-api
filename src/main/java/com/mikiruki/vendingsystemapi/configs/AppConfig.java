@@ -40,7 +40,7 @@ public class AppConfig {
         String password = dbUri.getUserInfo().split(":")[1];
 
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + "/vms");
+        dataSource.setUrl("jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath());
         dataSource.setUsername(username);
         dataSource.setPassword(password);
 
