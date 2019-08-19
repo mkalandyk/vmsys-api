@@ -137,8 +137,8 @@ public class AppConfig {
     }
 
     @Bean
-    JSONParserHelper<User> userParserHelper() { return new JSONParserHelper<>(){}; }
+    JSONParserHelper<User> userParserHelper() { return new JSONParserHelper<User>(){}; }
 
     @Bean
-    JSONParserHelper<Product> productParserHelper() { return new JSONParserHelper<>(){}; }
+    JSONParserHelper<Product> productParserHelper() { return new JSONParserHelper<Product>(){}; }
 }
