@@ -7,6 +7,7 @@ import com.mikiruki.vendingsystemapi.utils.JSONParserHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/login")
 public class LoginController {
@@ -21,13 +22,11 @@ public class LoginController {
     private JSONParserHelper<User> userParserHelper;
 
     @GetMapping("/mailtest")
-    @CrossOrigin(origins = "https://vm-sys.herokuapp.com")
     public void mailTest() {
         mailingService.sendTestMessage();
     }
 
     @PostMapping(path = "", consumes = "application/json")
-    @CrossOrigin(origins = "https://vm-sys.herokuapp.com")
     public User login(@RequestBody String json) {
         User sentUsr = userParserHelper.parseJSONToObject(json);
         return this.userService.login(sentUsr);
