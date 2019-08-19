@@ -6,6 +6,7 @@ import com.mikiruki.vendingsystemapi.services.MailingService;
 import com.mikiruki.vendingsystemapi.services.OrderListService;
 import com.mikiruki.vendingsystemapi.services.VendingMachineService;
 import com.mikiruki.vendingsystemapi.utils.JSONParserHelper;
+import javassist.compiler.SyntaxError;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.cache.CacheManager;
@@ -21,6 +22,8 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Properties;
 
 @Configuration
@@ -29,12 +32,13 @@ public class AppConfig {
 
     @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
-    BasicDataSource dataSource() {
+    BasicDataSource dataSource() throws URISyntaxException {
 
         BasicDataSource dataSource = new BasicDataSource();
+        URI dbUri = new URI(System.getenv("DATABASE_URL"));
 
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/vms");
+        dataSource.setUrl("jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + "/vms");
         dataSource.setUsername("vms-admin");
         dataSource.setPassword("a ");
 
@@ -43,7 +47,7 @@ public class AppConfig {
 
     @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
-    LocalSessionFactoryBean hibernate5AnnotatedSessionFactory() {
+    LocalSessionFactoryBean hibernate5AnnotatedSessionFactory() throws URISyntaxException {
 
         Properties hibernateProperties = new Properties();
 
