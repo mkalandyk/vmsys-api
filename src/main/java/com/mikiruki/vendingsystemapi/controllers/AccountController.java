@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
+@CrossOrigin(origins = "https://vm-sys.herokuapp.com", allowedHeaders = "*")
 @RestController
 @RequestMapping("/account")
 public class AccountController {
@@ -16,7 +17,6 @@ public class AccountController {
     private UserDAO userDAO;
 
     @PostMapping(path = "/update", consumes = "application/json")
-    @CrossOrigin(origins = "https://vm-sys.herokuapp.com")
     public boolean update(@RequestBody String json) throws IOException {
         ObjectMapper objMapper = new ObjectMapper();
         User user = objMapper.readValue(json, User.class);
@@ -24,7 +24,6 @@ public class AccountController {
     }
 
     @PostMapping(path = "/create", consumes = "application/json")
-    @CrossOrigin(origins = "https://vm-sys.herokuapp.com")
     public boolean create(@RequestBody String json) throws IOException {
         ObjectMapper objMapper = new ObjectMapper();
         User user = objMapper.readValue(json, User.class);
