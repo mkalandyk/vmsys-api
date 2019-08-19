@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Configurable
 @Entity
-@Table(name = "public.user")
+@Table(name = "user_data")
 public class User {
 
     @Id
