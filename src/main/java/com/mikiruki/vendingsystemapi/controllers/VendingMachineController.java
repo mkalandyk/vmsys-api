@@ -22,27 +22,27 @@ public class VendingMachineController {
     private VendingMachineService vendingMachineService;
 
     @GetMapping("")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://vm-sys.herokuapp.com")
     public List<VendingMachine> getMachinesState() {
         List<VendingMachine> allMachines = this.vendingMachineDAO.list();
         return allMachines;
     }
 
     @GetMapping("/last")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://vm-sys.herokuapp.com")
     public Integer getLastMachineId() {
         Integer lastId = this.vendingMachineDAO.getLastMachineId();
         return lastId;
     }
 
     @GetMapping("/{id}")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://vm-sys.herokuapp.com")
     public VendingMachine getMachineState(@PathVariable Integer id) {
         return this.vendingMachineDAO.findById(id);
     }
 
     @PostMapping(path = "/{id}", consumes = "application/json")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://vm-sys.herokuapp.com")
     public void updateMachineState(@RequestBody String json) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         VendingMachine machine = mapper.readValue(json, VendingMachine.class);

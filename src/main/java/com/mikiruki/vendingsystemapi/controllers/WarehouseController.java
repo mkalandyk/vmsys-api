@@ -13,14 +13,14 @@ public class WarehouseController {
     private WarehouseDAO warehouseDAO;
 
     @GetMapping("")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://vm-sys.herokuapp.com")
     public Warehouse getWarehouse() {
         Warehouse warehouse = this.warehouseDAO.findById(0);
         return warehouse;
     }
 
     @PostMapping(path = "/update", consumes = "text/plain")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://vm-sys.herokuapp.com")
     public boolean updateAddress(@RequestBody String json) {
         return this.warehouseDAO.updateAddress(json);
     }

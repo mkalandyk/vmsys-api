@@ -23,7 +23,7 @@ public class ProductController {
     private JSONParserHelper<Product> productParserHelper;
 
     @GetMapping("")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://vm-sys.herokuapp.com")
     public List<Product> getProducts() {
         List<Product> allProducts = this.productDAO.list();
         return allProducts;
@@ -37,7 +37,7 @@ public class ProductController {
     }
 
     @PostMapping(path = "/update", consumes = "application/json")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://vm-sys.herokuapp.com")
     public boolean updateProduct(@RequestBody String json) {
         Product product = productParserHelper.parseJSONToObject(json);
         return this.productDAO.updateProduct(product);

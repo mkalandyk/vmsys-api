@@ -19,37 +19,37 @@ public class OrderListController {
     private OrderListService orderListService;
 
     @GetMapping("")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://vm-sys.herokuapp.com")
     public List<OrderList> getOrderList() {
         return orderListDAO.getOrders();
     }
 
     @GetMapping("/product")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://vm-sys.herokuapp.com")
     public List<OrderListByProducts> getOrderListByProduct() {
         return orderListDAO.getOrdersByProduct();
     }
 
     @GetMapping("/machine")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://vm-sys.herokuapp.com")
     public List<OrderListByMachine> getOrderListByMachine() {
         return orderListDAO.getOrdersByMachine();
     }
 
     @GetMapping("/product_full")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://vm-sys.herokuapp.com")
     public List<OrderListByProductsWithContent> getOrderListByProductWithContent() {
         return this.orderListService.getOrderForProductsListWithContent();
     }
 
     @GetMapping("/machine_full")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://vm-sys.herokuapp.com")
     public List<OrderListByMachineWithContent> getOrderListByMachineWithContent() {
         return this.orderListService.getOrderForMachinesListWithContent();
     }
 
     @PostMapping(path = "/completeList", consumes = "application/json")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://vm-sys.herokuapp.com")
     public boolean completeOrderList(@RequestBody String json) {
         return this.orderListService.completeOrderList(json);
     }

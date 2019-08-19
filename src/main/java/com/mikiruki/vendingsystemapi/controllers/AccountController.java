@@ -16,7 +16,7 @@ public class AccountController {
     private UserDAO userDAO;
 
     @PostMapping(path = "/update", consumes = "application/json")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://vm-sys.herokuapp.com")
     public boolean update(@RequestBody String json) throws IOException {
         ObjectMapper objMapper = new ObjectMapper();
         User user = objMapper.readValue(json, User.class);
@@ -24,7 +24,7 @@ public class AccountController {
     }
 
     @PostMapping(path = "/create", consumes = "application/json")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://vm-sys.herokuapp.com")
     public boolean create(@RequestBody String json) throws IOException {
         ObjectMapper objMapper = new ObjectMapper();
         User user = objMapper.readValue(json, User.class);

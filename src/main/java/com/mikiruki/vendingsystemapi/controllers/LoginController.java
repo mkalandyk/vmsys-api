@@ -21,13 +21,13 @@ public class LoginController {
     private JSONParserHelper<User> userParserHelper;
 
     @GetMapping("/mailtest")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://vm-sys.herokuapp.com")
     public void mailTest() {
         mailingService.sendTestMessage();
     }
 
     @PostMapping(path = "", consumes = "application/json")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://vm-sys.herokuapp.com")
     public User login(@RequestBody String json) {
         User sentUsr = userParserHelper.parseJSONToObject(json);
         return this.userService.login(sentUsr);
