@@ -4,6 +4,7 @@ import com.mikiruki.vendingsystemapi.dao.*;
 import com.mikiruki.vendingsystemapi.models.*;
 import com.mikiruki.vendingsystemapi.services.MailingService;
 import com.mikiruki.vendingsystemapi.services.OrderListService;
+import com.mikiruki.vendingsystemapi.services.UserService;
 import com.mikiruki.vendingsystemapi.services.VendingMachineService;
 import com.mikiruki.vendingsystemapi.utils.JSONParserHelper;
 import javassist.compiler.SyntaxError;
@@ -147,4 +148,9 @@ public class AppConfig {
 
     @Bean
     JSONParserHelper<Product> productParserHelper() { return new JSONParserHelper<Product>(){}; }
+
+    @Bean
+    UserService userService() {
+        return new UserService();
+    }
 }
