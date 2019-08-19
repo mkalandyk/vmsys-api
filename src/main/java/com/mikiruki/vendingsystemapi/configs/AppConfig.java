@@ -35,7 +35,7 @@ public class AppConfig {
     BasicDataSource dataSource() throws URISyntaxException {
 
         BasicDataSource dataSource = new BasicDataSource();
-        URI dbUri = new URI(System.getenv("DATABASE_URL"));
+        URI dbUri = new URI(System.getenv("HEROKU_POSTGRESQL_ORANGE_URL"));
         String username = dbUri.getUserInfo().split(":")[0];
         String password = dbUri.getUserInfo().split(":")[1];
 
